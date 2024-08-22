@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'input_page.dart';
+import 'screens/input_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,8 +26,15 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0A0E21),
         appBarTheme: AppBarTheme(backgroundColor: Color(0xFF0A0E21)),
         textTheme: TextTheme(titleLarge: TextStyle(color: Color(0XFF8D8E98))),
+        sliderTheme: SliderThemeData(
+          activeTrackColor: Colors.white,
+          inactiveTrackColor: Color(0xFF8D8E98),
+          // overlayColor: Color(0x29EB1555),
+          thumbColor: Color(0xFFEB1555),
+          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20),
+          // overlayShape: RoundSliderThumbShape(enabledThumbRadius: 28),
+        ),
         brightness: Brightness.dark,
-        // useMaterial3: false,
       ),
       themeMode: ThemeMode.dark,
       home: InputPage(),
