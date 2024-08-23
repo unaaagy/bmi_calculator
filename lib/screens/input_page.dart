@@ -1,10 +1,11 @@
-import 'package:bmi_calculator/components/rounded_icon_button.dart';
-import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../calculator_brain.dart';
 import '../components/icon_content.dart';
 import '../components/reusable_card.dart';
+import '../components/rounded_icon_button.dart';
+import 'results_page.dart';
 
 const Color inactiveCardColor = Color(0XFF111328);
 const Color activeCardColor = Color(0XFF1D1E33);
@@ -230,8 +231,15 @@ class _InputPageState extends State<InputPage> {
           SizedBox(height: 16),
           GestureDetector(
             onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ResultsPage();
+                return ResultsPage(
+                  bmiResult: calc.calculateBMI(),
+                  resultText: calc.getResult(),
+                  interpretation: calc.getInterpretation(),
+                );
               }));
             },
             child: Container(

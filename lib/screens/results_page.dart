@@ -2,7 +2,16 @@ import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:flutter/material.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({super.key});
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
+  const ResultsPage({
+    super.key,
+    required this.bmiResult,
+    required this.resultText,
+    required this.interpretation,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +50,7 @@ class ResultsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(
-                      'OVERWEIGHT',
+                      resultText,
                       style:
                           Theme.of(context).textTheme.headlineMedium?.copyWith(
                                 fontWeight: FontWeight.bold,
@@ -49,7 +58,7 @@ class ResultsPage extends StatelessWidget {
                               ),
                     ),
                     Text(
-                      '26.7',
+                      bmiResult,
                       style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontWeight: FontWeight.w700,
                             fontSize: 100,
@@ -58,9 +67,10 @@ class ResultsPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
                       child: Text(
-                          'You have a higher than normal body weight. Try to exercise more.',
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineSmall),
+                        interpretation,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                     ),
                   ],
                 ),
